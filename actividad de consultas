@@ -1,1 +1,26 @@
+//Esta consulta los viajeros y su origen ademas de cuantas veces viajaron
+SELECT v.nombre AS nombre_viajero, COUNT(*) AS numero_de_viajes
+FROM taller2.viajeros v
+LEFT JOIN taller2.origen o ON v.id = o.viajes_id
+GROUP BY v.nombre;
 
+
+//esta muestra los datos de los viajes destinos y origenes
+SELECT * FROM taller2.viajes,taller2.destino,taller2.origen
+where viajes.id = destino.id and viajes.id = origen.id;
+
+// esta consulta muestra la relacion de los viajeros con sus familiares
+SELECT * FROM taller2.viajes,taller2.referencias_familiares,taller2.viajeros
+where  viajes.id = referencias_familiares.id and 
+referencias_familiares.id = viajeros.id;
+
+
+//  esta es una consulta completa que muestra un historial de los viajes de los viajeros como por ejemplo plazas compradas
+// numero de compras y mas
+SELECT v.id, v.nombre, v.direccion, v.telefono, SUM(CAST(j.numeroPlazas AS SIGNED)) AS suma_numeroPlazas,
+count(CAST(j.viajeros_id AS SIGNED)) AS numero_de_compras
+FROM taller2.viajeros v
+left JOIN taller2.viajes j ON v.id = j.viajeros_id
+GROUP BY v.id, v.nombre, v.direccion, v.telefono
+HAVING SUM(CAST(j.numeroPlazas AS SIGNED)) > 4
+order by v.id desc;
