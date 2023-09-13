@@ -1,1 +1,56 @@
 
+
+ejercicio 1:
+
+base = float(input("Ingrese la base del triángulo: "))
+altura = float(input("Ingrese la altura del triángulo: "))
+
+# Calcular el área del triángulo
+area = (base * altura) / 2
+
+# Mostrar el resultado
+print(f"El área del triángulo es: {area}")
+
+
+
+
+
+ejercicio 2:
+x = float(input("Ingrese el valor de x: "))
+
+# Calcular el resultado de la ecuación
+resultado = (x**3) + ((x**2) / (2 * x))
+
+# Mostrar el resultado
+print(f"El resultado de la ecuación es: {resultado}")
+
+
+
+
+
+
+ejercicio 3:
+import math
+
+# Pedir al usuario que ingrese los valores de a, b y c
+a = float(input("Ingrese el valor de a: "))
+b = float(input("Ingrese el valor de b: "))
+c = float(input("Ingrese el valor de c: "))
+
+# Calcular el discriminante (parte dentro de la raíz cuadrada)
+discriminante = b**2 - 4*a*c
+
+# Verificar si el discriminante es positivo, negativo o cero
+if discriminante > 0:
+    # Dos soluciones reales distintas
+    x1 = (-b + math.sqrt(discriminante)) / (2*a)
+    x2 = (-b - math.sqrt(discriminante)) / (2*a)
+    print(f"Las soluciones son x1 = {x1} y x2 = {x2}")
+elif discriminante == 0:
+    # Una solución real (raíz doble)
+    x1 = -b / (2*a)
+    print(f"La solución doble es x1 = x2 = {x1}")
+else:
+    real = -b / (2*a)
+    imaginaria = math.sqrt(-discriminante) / (2*a)
+    print(f"Las soluciones son complejas: x1 = {real} + {imaginaria}i y x2 = {real_part} - {imaginaria}i")
