@@ -24,3 +24,22 @@ left JOIN taller2.viajes j ON v.id = j.viajeros_id
 GROUP BY v.id, v.nombre, v.direccion, v.telefono
 HAVING SUM(CAST(j.numeroPlazas AS SIGNED)) > 4
 order by v.id desc;
+
+
+//uso del delimiteer
+
+DELIMITER //
+
+CREATE PROCEDURE InsertarViaje(
+    IN numeroPlazas VARCHAR(45),
+    IN frv VARCHAR(45),
+    IN viajeros_id INT
+)
+BEGIN
+	USE taller2;
+    
+    INSERT INTO viajes (numeroPlazas, frv, viajeros_id)
+    VALUES (numeroPlazas, frv, viajeros_id);
+END //
+
+DELIMITER ;
